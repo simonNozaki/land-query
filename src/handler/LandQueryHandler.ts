@@ -62,6 +62,9 @@ class Main {
             }).getBadRequest()
         }
 
-        return new ApiGatewayResponse({ result: results }).getOk()
+        const response = new ApiGatewayResponse({ result: results }).getOk()
+        console.log(`レスポンス: ${response}`)
+
+        return response
     }
 }

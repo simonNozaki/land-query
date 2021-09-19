@@ -29,7 +29,7 @@ export const execute: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 /**
  * ハンドラからよばれるメインクラス
  */
-class Main {
+export class Main {
     private event: APIGatewayProxyEvent
     historicEventRepository: HistoricEventRepository
     constructor(
@@ -40,6 +40,10 @@ class Main {
         this.historicEventRepository = historicEventRepository
     }
 
+    /**
+     * 処理の実行
+     * @returns 
+     */
     execute(): APIGatewayProxyResult {
         const request: HandlerRequest = JSON.parse(this.event.body)
         console.log(`リクエスト: ${request}`)

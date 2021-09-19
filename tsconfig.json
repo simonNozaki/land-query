@@ -12,10 +12,15 @@
     "outDir": "lib",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["reflect-metadata", "node"]
+    "types": [
+      "reflect-metadata",
+      "node",
+      "jest"
+    ]
   },
   "include": [
     "src/**/*.ts",
+    "test/**/*.ts",
     "serverless.ts"
   ],
   "exclude": [

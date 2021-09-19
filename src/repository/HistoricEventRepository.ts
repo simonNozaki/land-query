@@ -1,4 +1,4 @@
-import { HistoricEvent } from "src/type/HistoricEvent";
+import { HistoricEvent } from 'src/type/HistoricEvent'
 
 /**
  * 歴史的な出来事リポジトリ

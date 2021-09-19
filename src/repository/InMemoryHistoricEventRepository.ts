@@ -1,12 +1,15 @@
-import { HistoricEvent } from "src/type/HistoricEvent"
-import { HistoricEventRepository } from "./HistoricEventRepository"
+import 'reflect-metadata'
+import { HistoricEvent } from 'src/type/HistoricEvent'
+import { HistoricEventRepository } from 'src/repository/HistoricEventRepository'
 import { v4 } from 'uuid'
+import { injectable } from 'inversify'
 
 const now = new Date().toString()
 
 /**
  * ローカル開発用モックリポジトリ実装クラス
  */
+ @injectable()
 export class InMemoryHistoricEventRepository implements HistoricEventRepository {
     find(): HistoricEvent[] {
         return historicEvents

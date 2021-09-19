@@ -9,16 +9,19 @@
   },
   "dependencies": {
     "@types/uuid": "^8.3.1",
+    "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.988.0",
+    "inversify": "^5.1.1",
+    "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.19",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@serverless/typescript": "^2.23.0",
     "@types/aws-lambda": "^8.10.71",
-    "@types/node": "^14.14.25",
+    "@types/node": "^14.17.17",
     "serverless": "^2.23.0",
-    "serverless-offline": "^8.1.0",
+    "serverless-offline": "^8.2.0",
     "serverless-webpack": "^5.3.5",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",

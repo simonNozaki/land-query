@@ -1,10 +1,12 @@
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
+import { injectable } from "inversify";
 import { HistoricEvent } from "src/type/HistoricEvent";
-import { HistoricEventRepository } from "./HistoricEventRepository";
+import { HistoricEventRepository } from "src/repository/HistoricEventRepository";
 
 /**
  * DynamoDBリポジトリ実装クラス
  */
+@injectable()
 export class DynamoDbHistoricEventRepository implements HistoricEventRepository {
     private documentClient: DocumentClient
     constructor(documentClient: DocumentClient) {

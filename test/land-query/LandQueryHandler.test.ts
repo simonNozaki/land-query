@@ -1,15 +1,15 @@
-import { TYPES } from "../../src/application/dependency/Types"
-import { Main } from "../../src/handler/LandQueryHandler"
-import { HistoricEventRepository } from "../../src/repository/HistoricEventRepository"
-import { APIGatewayEventGenerator } from "../APIGatewayEventGenerator"
-import { mockMainContainer } from "../config/inversify.mock.config"
+import { Main } from '../../src/handler/LandQueryHandler'
+import { HistoricEventRepository } from '../../src/repository/HistoricEventRepository'
+import { TYPES } from '../../src/repository/Types'
+import { APIGatewayEventGenerator } from '../APIGatewayEventGenerator'
+import { mockMainContainer } from '../config/inversify.mock.config'
 
 describe('LandQueryHandler', () => {
     it('should fetch all events with a mock', () => {
         // リクエストの初期化
         const req = { lands: ['normandy'] }
         const event = new APIGatewayEventGenerator().getEvent(req)
-        const mockHistoricEventRepository = mockMainContainer.get<HistoricEventRepository>(TYPES.HistoricEventRepository)
+        const mockHistoricEventRepository: HistoricEventRepository = mockMainContainer.get(TYPES.HistoricEventRepository)
 
         // 実行
         const actual = new Main(event, mockHistoricEventRepository).execute()

@@ -9,7 +9,7 @@ const now = new Date().toString()
 /**
  * ローカル開発用モックリポジトリ実装クラス
  */
- @injectable()
+@injectable()
 export class InMemoryHistoricEventRepository implements HistoricEventRepository {
     find(): HistoricEvent[] {
         return historicEvents

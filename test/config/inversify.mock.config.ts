@@ -1,7 +1,7 @@
 import { Container } from 'inversify'
 import { HistoricEventRepository } from '../../src/repository/HistoricEventRepository'
+import { TYPES } from '../../src/repository/Types'
 import { MockHistoricEventRepository } from '../land-query/repository/MockHistoricEventRepository'
-import { TYPES } from '../../src/application/dependency/Types'
 
 // ベーシックなモック用コンテナ
 export const mockMainContainer = new Container()

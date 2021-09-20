@@ -2,8 +2,8 @@ import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } f
 import { inject } from 'inversify'
 import { ApiGatewayResponse } from '../application/commons/ApiGatewayUtils'
 import { HistoricEventRepository } from '../repository/HistoricEventRepository'
-import { TYPES } from '../application/dependency/Types'
-import { defaultContainer } from '../application/dependency/inversify.config'
+import { TYPES } from '../repository/Types'
+import { defaultContainer } from '../repository/inversify.config'
 
 
 /**
@@ -20,7 +20,7 @@ interface HandlerRequest {
  * @returns 
  */
 export const execute: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
-    const historicEventRepository = defaultContainer.get<HistoricEventRepository>(TYPES.HistoricEventRepository)
+    const historicEventRepository: HistoricEventRepository = defaultContainer.get(TYPES.HistoricEventRepository)
 
     return new Main(event, historicEventRepository).execute()
 }

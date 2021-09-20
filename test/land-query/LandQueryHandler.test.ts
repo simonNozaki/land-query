@@ -1,8 +1,8 @@
-import { TYPES } from "src/application/dependency/Types"
-import { Main } from "src/handler/LandQueryHandler"
-import { HistoricEventRepository } from "src/repository/HistoricEventRepository"
-import { APIGatewayEventGenerator } from "test/APIGatewayEventGenerator"
-import { mockMainContainer } from "test/config/inversify.mock.config"
+import { TYPES } from "../../src/application/dependency/Types"
+import { Main } from "../../src/handler/LandQueryHandler"
+import { HistoricEventRepository } from "../../src/repository/HistoricEventRepository"
+import { APIGatewayEventGenerator } from "../APIGatewayEventGenerator"
+import { mockMainContainer } from "../config/inversify.mock.config"
 
 describe('LandQueryHandler', () => {
     it('should fetch all events with a mock', () => {

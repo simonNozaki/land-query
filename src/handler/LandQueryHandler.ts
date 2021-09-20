@@ -1,9 +1,9 @@
 import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import { inject } from 'inversify'
-import { ApiGatewayResponse } from 'src/application/commons/ApiGatewayUtils'
-import { HistoricEventRepository } from 'src/repository/HistoricEventRepository'
-import { TYPES } from 'src/application/dependency/Types'
-import { defaultContainer } from 'src/application/dependency/inversify.config'
+import { ApiGatewayResponse } from '../application/commons/ApiGatewayUtils'
+import { HistoricEventRepository } from '../repository/HistoricEventRepository'
+import { TYPES } from '../application/dependency/Types'
+import { defaultContainer } from '../application/dependency/inversify.config'
 
 
 /**
@@ -45,8 +45,8 @@ export class Main {
      * @returns 
      */
     execute(): APIGatewayProxyResult {
+        console.info(`リクエスト: ${this.event.body}`)
         const request: HandlerRequest = JSON.parse(this.event.body)
-        console.log(`リクエスト: ${request}`)
 
         if (request.lands.length == 0) {
             return new ApiGatewayResponse({
@@ -67,7 +67,7 @@ export class Main {
         }
 
         const response = new ApiGatewayResponse({ result: results }).getOk()
-        console.log(`レスポンス: ${response}`)
+        console.info(`レスポンス: ${response.toString()}`)
 
         return response
     }

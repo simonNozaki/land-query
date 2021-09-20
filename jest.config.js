@@ -1,12 +1,12 @@
 module.exports = {
-    'roots': [
-      '<rootDir>/src'
+    roots: [
+      '<rootDir>/test'
     ],
-    'testMatch': [
-      'test/**/*.+(ts|tsx|js)',
-      '**/?(*.)+(spec|test).+(ts|tsx|js)'
+    testMatch: [
+      '**/?(*.)+(spec|test).[jt]s?(x)'
     ],
-    'transform': {
+    transform: {
       '^.+\\.(ts|tsx)$': 'ts-jest'
     },
+    testEnvironment: 'node'
 }

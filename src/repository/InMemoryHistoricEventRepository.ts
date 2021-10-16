@@ -11,12 +11,16 @@ const now = new Date().toString()
  */
 @injectable()
 export class InMemoryHistoricEventRepository implements HistoricEventRepository {
-    find(): HistoricEvent[] {
-        return historicEvents
+    find(): Promise<HistoricEvent[]> {
+        return new Promise((resolve) => {
+            resolve(historicEvents)
+        })
     }
 
-    findByLand(land: string): HistoricEvent[] {
-        return historicEvents.filter(e => e.land === land)
+    findByLand(land: string): Promise<HistoricEvent[]> {
+        return new Promise((resolve) => {
+            resolve(historicEvents.filter(e => e.land === land))
+        })
     }
 }
 

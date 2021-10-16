@@ -5,14 +5,14 @@ import { APIGatewayEventGenerator } from '../APIGatewayEventGenerator'
 import { mockMainContainer } from '../config/inversify.mock.config'
 
 describe('LandQueryHandler', () => {
-    it('should fetch all events with a mock', () => {
+    it('should fetch all events with a mock', async () => {
         // リクエストの初期化
         const req = { lands: ['normandy'] }
         const event = new APIGatewayEventGenerator().getEvent(req)
         const mockHistoricEventRepository: HistoricEventRepository = mockMainContainer.get(TYPES.HistoricEventRepository)
 
         // 実行
-        const actual = new Main(event, mockHistoricEventRepository).execute()
+        const actual = await new Main(event, mockHistoricEventRepository).execute()
 
         // アサーション
         const body = JSON.parse(actual.body)

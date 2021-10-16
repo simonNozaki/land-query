@@ -30,21 +30,16 @@ export const execute: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
  * ハンドラからよばれるメインクラス
  */
 export class Main {
-    private event: APIGatewayProxyEvent
-    historicEventRepository: HistoricEventRepository
     constructor(
-        event: APIGatewayProxyEvent,
-        @inject(TYPES.HistoricEventRepository) historicEventRepository: HistoricEventRepository
-    ) {
-        this.event = event
-        this.historicEventRepository = historicEventRepository
-    }
+        private event: APIGatewayProxyEvent,
+        @inject(TYPES.HistoricEventRepository) private historicEventRepository: HistoricEventRepository
+    ) {}
 
     /**
      * 処理の実行
      * @returns 
      */
-    execute(): APIGatewayProxyResult {
+    async execute(): Promise<APIGatewayProxyResult> {
         console.info(`リクエスト: ${this.event.body}`)
         const request: HandlerRequest = JSON.parse(this.event.body)
 
@@ -56,7 +51,7 @@ export class Main {
 
         const results = []
         for (const land of request.lands) {
-            const records = this.historicEventRepository.findByLand(land)
+            const records = await this.historicEventRepository.findByLand(land)
             results.push(records)
         }
 

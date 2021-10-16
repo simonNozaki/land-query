@@ -9,25 +9,27 @@ const now = new Date().toString()
  */
 @injectable()
 export class MockHistoricEventRepository implements HistoricEventRepository {
-    find(): HistoricEvent[] {
+    find(): Promise<HistoricEvent[]> {
         throw new Error('Method not implemented.');
     }
-    findByLand(land: string): HistoricEvent[] {
-        return [
-            {
-                land: land,
-                id: '',
-                country: 'FR',
-                events: [
-                    {
-                        title: 'ノルマンディ上陸作戦',
-                        happendOn: 1944
-                    }
-                ],
-                createdAt: now,
-                updatedAt: now
-            }
-        ]
+    findByLand(land: string): Promise<HistoricEvent[]> {
+        return new Promise((resolve) => {
+            resolve([
+                {
+                    land: land,
+                    id: '',
+                    country: 'FR',
+                    events: [
+                        {
+                            title: 'ノルマンディ上陸作戦',
+                            happendOn: 1944
+                        }
+                    ],
+                    createdAt: now,
+                    updatedAt: now
+                }
+            ])
+        })
     }
 
 }

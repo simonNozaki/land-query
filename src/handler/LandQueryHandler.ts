@@ -4,6 +4,7 @@ import { ApiGatewayResponse } from '../application/commons/ApiGatewayUtils'
 import { HistoricEventRepository } from '../repository/HistoricEventRepository'
 import { TYPES } from '../repository/Types'
 import { defaultContainer } from '../repository/inversify.config'
+import { Result } from 'resultt'
 
 
 /**
@@ -51,8 +52,12 @@ export class Main {
 
         const results = []
         for (const land of request.lands) {
-            const records = await this.historicEventRepository.findByLand(land)
-            results.push(records)
+            Result.runCatching(async() => {
+                const records = await this.historicEventRepository.findByLand(land)
+                results.push(records)
+            }).getOrElse((it: Error) => {
+                console.error(`レコードの参照中にエラー発生 => ${it}`)
+            })
         }
 
         if (results.length == 0) {

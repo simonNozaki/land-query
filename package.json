@@ -13,6 +13,7 @@
     "aws-sdk": "^2.988.0",
     "inversify": "^5.1.1",
     "reflect-metadata": "^0.1.13",
+    "resultt": "^1.0.5",
     "source-map-support": "^0.5.19",
     "uuid": "^8.3.2"
   },
